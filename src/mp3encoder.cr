@@ -1,4 +1,4 @@
-@[Link("mp3encoder")]
+@[Link("libmp3encoder")]
 lib Native
   fun hello = hello : Void
 end
