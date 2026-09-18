@@ -11,13 +11,11 @@ echo "==> Configuring LAME"
 
 cd "$LAME_DIR"
 
-if [ ! -f Makefile ]; then
-  ./configure \
-    --disable-shared \
-    --enable-static \
-    --disable-frontend \
-    --disable-decoder
-fi
+./configure \
+  --disable-shared \
+  --enable-static \
+  --disable-frontend \
+  --disable-decoder
 
 echo "==> Building LAME"
 
