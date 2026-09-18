@@ -30,7 +30,10 @@ clang \
   -c \
   "$EXT_DIR/mp3encoder.c" \
   -I"$LAME_DIR/include" \
+  "$LAME_DIR/libmp3lame/.libs/libmp3lame.a" \
   -o "$DIST_DIR/mp3encoder.o"
+
+
 
 echo "==> Creating libmp3encoder.a"
 
