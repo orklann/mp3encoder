@@ -4,6 +4,7 @@
 /.shards/
 *.dwarf
 
+.DS_Store
 *.a
 *.o
 *.log
