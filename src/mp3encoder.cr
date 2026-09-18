@@ -1,4 +1,4 @@
-@[Link(ldflags: "-L#{__DIR__}/../lib -lmp3encoder")]
+@[Link(ldflags: "-L#{__DIR__}/../lib -llibmp3encoder")]
 lib Native
   fun hello = hello : Void
 end
