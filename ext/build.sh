@@ -30,12 +30,10 @@ clang \
   -I"$LAME_DIR/include" \
   -o "$DIST_DIR/mp3encoder.o"
 
-
-
 echo "==> Creating libmp3encoder.a"
 
 ar rcs \
-  "$LAME_DIR/libmp3lame/.libs/libmp3lame.a" \
+  "$DIST_DIR/libmp3encoder.a" \
   "$DIST_DIR/mp3encoder.o"
 
 echo "==> Done"
