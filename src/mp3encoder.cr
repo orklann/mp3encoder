@@ -1,4 +1,4 @@
-@[Link(ldflags: "-L#{__DIR__}/../ext/lib -lmp3encoder")]
+@[Link(ldflags: "-L#{__DIR__}/../ext/lib -lmp3encoder -lmp3lame")]
 lib Native
   fun hello = hello : Void
   fun start_pcm_to_mp3(mp3_path : LibC::Char*, sample_rate : UInt32) : LibC::Int

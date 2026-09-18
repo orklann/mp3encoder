@@ -21,6 +21,9 @@ echo "==> Building LAME"
 
 make -j"$(sysctl -n hw.ncpu)"
 
+echo "==> Copying LAME library"
+cp libmp3lame/.libs/libmp3lame.a "$DIST_DIR/"
+
 echo "==> Building mp3encoder"
 
 clang \
