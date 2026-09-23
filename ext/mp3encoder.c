@@ -17,7 +17,8 @@ typedef struct {
 int mp3_encoder_start(
     Mp3Encoder *encoder,
     const char *output_path,
-    unsigned int sample_rate
+    unsigned int sample_rate,
+    unsigned int bitrate // 192 to be 192k
 ) {
     encoder->lame = lame_init();
     if (!encoder->lame)
@@ -25,7 +26,7 @@ int mp3_encoder_start(
 
     lame_set_in_samplerate(encoder->lame, sample_rate);
     lame_set_num_channels(encoder->lame, 2);
-    lame_set_brate(encoder->lame, 192);
+    lame_set_brate(encoder->lame, bitrate);
     lame_set_quality(encoder->lame, 0);
 
     if (lame_init_params(encoder->lame) < 0) {

@@ -1,7 +1,7 @@
 @[Link(ldflags: "-L#{__DIR__}/../ext/lib -lmp3encoder -lmp3lame")]
 lib Native
   fun hello = hello : Void
-  fun start_pcm_to_mp3(mp3_path : LibC::Char*, sample_rate : UInt32) : LibC::Int
+  fun start_pcm_to_mp3(mp3_path : LibC::Char*, sample_rate : UInt32, bitrate : UInt32) : LibC::Int
   fun write_pcm_to_mp3(pcm : Int16*, frames : UInt32) : LibC::Int
   fun stop_pcm_to_mp3 : Void
 end
@@ -11,8 +11,8 @@ class MP3Encoder
 
   end
 
-  def start(mp3_path : String, sample_rate : UInt32 = 48000_u32)
-    Native.start_pcm_to_mp3(mp3_path, sample_rate)
+  def start(mp3_path : String, sample_rate : UInt32 = 48000_u32, bitrate : UInt32 = 128_u32)
+    Native.start_pcm_to_mp3(mp3_path, sample_rate, bitrate)
   end
 
   def write(pcm : Pointer(Int16), frames : UInt32)
