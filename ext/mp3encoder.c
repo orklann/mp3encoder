@@ -129,11 +129,12 @@ int mp3_encoder_stop(Mp3Encoder *encoder)
 
 Mp3Encoder encoder;
 
-int start_pcm_to_mp3(const char *mp3_path, unsigned int sample_rate) {
+int start_pcm_to_mp3(const char *mp3_path, unsigned int sample_rate, unsigned int bitrate) {
     if (mp3_encoder_start(
         &encoder,
         mp3_path,
-        sample_rate
+        sample_rate,
+        bitrate
     ) != 0) {
         return 1;
     } 
