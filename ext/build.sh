@@ -11,7 +11,6 @@ echo "==> Configuring LAME"
 
 cd "$LAME_DIR"
 
-# Clean any previous architecture build state if re-running
 if [ -f "Makefile" ]; then
     make distclean || true
 fi
@@ -29,16 +28,18 @@ make -j"$(sysctl -n hw.ncpu)"
 echo "==> Copying LAME library"
 cp libmp3lame/.libs/libmp3lame.a "$DIST_DIR/"
 
+echo "==> Setting up local include directory for lame/lame.h"
+# Create a local 'lame' directory under $DIST_DIR/include and copy/symlink lame.h into it
+mkdir -p "$DIST_DIR/include/lame"
+cp "$LAME_DIR/include/lame.h" "$DIST_DIR/include/lame/"
+
 echo "==> Building mp3encoder"
 
-# Include both the LAME include directory and the root directory so <lame/lame.h> resolves correctly
 clang \
   -O2 \
   -c \
   "$EXT_DIR/mp3encoder.c" \
-  -I"$LAME_DIR" \
-  -I"$LAME_DIR/include" \
-  -I"$LAME_DIR/libmp3lame" \
+  -I"$DIST_DIR/include" \
   -o "$DIST_DIR/mp3encoder.o"
 
 echo "==> Creating libmp3encoder.a"
